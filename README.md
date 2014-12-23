@@ -11,3 +11,5 @@ javascript:(function(d,s){s=d.createElement('script');s.src='https://rawgit.com/
 При клике на закладку, на сайте должна появиться панель с типографом.
 
 ![Panel](https://raw.githubusercontent.com/typograf/bookmarklet/master/test/panel.png)
+
+На сайтах, использующих [CSP](https://developer.mozilla.org/en-US/docs/Web/Security/CSP) (github.com, facebook.com, и др.), букмарклет не работает.
