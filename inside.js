@@ -68,7 +68,7 @@ var App = {
         };
     },
     _getIframeUrl: function() {
-        return protocol + '//typograf.github.io/web/';
+        return protocol + '//typograf.github.io';
     },
     _updateIframe: function() {
         this._isLoaded = false;
