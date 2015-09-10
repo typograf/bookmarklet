@@ -5,7 +5,7 @@
 
 Для этого необходимо создать закладку в браузере и указать у неё адрес:
 ```js
-javascript:(function(d,s){s=d.createElement('script');s.src='https://rawgit.com/typograf/bookmarklet/master/inside.js';d.body.appendChild(s)})(document);
+javascript:(function(d,s){s=d.createElement('script');s.src='https://rawgit.com/typograf/bookmarklet/master/inside.js?v='+Date.now();d.body.appendChild(s)})(document);
 ```
 
 При клике на закладку, на сайте должна появиться панель с типографом.
