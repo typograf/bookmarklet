@@ -60,6 +60,8 @@ var App = {
             } else {
                 text = active.value.substring(active.selectionStart, active.selectionEnd);
             }
+        } else {
+            active = null;
         }
 
         return {
@@ -80,9 +82,8 @@ var App = {
         toolbar.className = 'typograf-toolbar';
         this._toolbar = toolbar;
 
-        var execute = document.createElement('a');
+        var execute = document.createElement('span');
         execute.className = 'typograf-button typograf-button_execute';
-        execute.href = '#';
         execute.innerHTML = 'Типографировать';
         toolbar.appendChild(execute);
         this._buttonExecute = execute;
@@ -149,13 +150,24 @@ var App = {
             e.preventDefault();
         }).bind(this));
 
+        addEvent(this._buttonExecute, 'mouseup', (function(e) {
+            setTimeout(function() {
+                if(this._isOk) {
+                    this.messageText('ok');
+                    this._isOk = false;
+                }
+            }.bind(this), 1);
+        }).bind(this));
+
         this._onselect = (function(e) {
-            this.messageText(this._getSelection() ? 'selected' : 'select');
+            this.messageText(this._getSelection().text ? 'selected' : 'select');
         }).bind(this);
         addEvent(document, 'select', this._onselect, true);
 
         this._onmouseup = (function() {
-            this._getSelection().text || this.messageText('select');
+            if(!this._getSelection().text) {
+                this.messageText('select');
+            }
         }).bind(this);
         addEvent(document, 'mouseup', this._onmouseup);
 
@@ -174,8 +186,8 @@ var App = {
             }
 
             if(data && data.service === 'typograf' && data.command === 'return') {
+                this._isOk = true;
                 this._paste(lastInput, data.text);
-                this.messageText('ok');
             }
         }).bind(this);
         addEvent(window, 'message', this._onmessage);
