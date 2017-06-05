@@ -8,7 +8,7 @@
 javascript:(function(d,s){s=d.createElement('script');s.src='https://rawgit.com/typograf/bookmarklet/master/inside.js?v='+Date.now();d.body.appendChild(s)})(document);
 ```
 
-При клике на закладку, на сайте должна появиться панель с типографом.
+При клике на закладку, на сайте должна появиться панель с типографом. Вводим текст в поле и нажимаем кнопку «Типографировать».
 
 ![Panel](https://raw.githubusercontent.com/typograf/bookmarklet/master/test/panel.png)
 
